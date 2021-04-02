@@ -1,0 +1,23 @@
+:root {
+	--main-bg-color: #8e7b9f;
+	--main-bg-accent: #b592ad;
+	--main-gray: #dad3d1;
+	--secondary-color: #2e4806;
+	--secondary-accent: #849c20;
+}
+body {
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+		Arial, sans-serif;
+	margin: auto;
+	max-width: 38rem;
+	padding: 2rem;
+	background-color: var(--main-bg-color);
+}
+
+.form {
+}
+
+.form__input--register {
+	display: block;
+	background-color: var(--secondary-accent);
+}
