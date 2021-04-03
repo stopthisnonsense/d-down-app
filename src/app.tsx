@@ -1,5 +1,21 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+const users = [];
+class User {
+    userName: string;
+    firstName: string;
+    lastName: string;
+    birthDay: Date;
+    constructor (userName: string, firstName: string, lastName: string, birthDay: Date){
+        this.userName = userName
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDay = birthDay;
+    }
+}
+
+
+
 function App() {
     return (
         <div>
@@ -19,7 +35,15 @@ function Welcome( ) {
 function Register () {
     function click(e: { preventDefault: () => void; }) {
         e.preventDefault()
-        console.log( document.querySelector( '.form--register' ) )
+        const form = document.querySelector( '.form--register' )
+        const formFields = form.querySelectorAll('input')
+        formFields.forEach((item) => {
+            if( item.value != null ) {
+                console.log( item.value )
+            }
+
+        })
+        // console.log( document.querySelector( '.form--register' ) )
     }
     return (
         <div>
@@ -51,11 +75,6 @@ function render() {
 //   ReactDOM.render( <h2>What kind of D do you need?</h2>, document.getElementById( 'app'
 //    ) )
 }
-class User {
-    userName: string;
-    firstName: string;
-    lastName: string;
-    birthDay: Date;
-}
+
 
 render();
