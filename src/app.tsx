@@ -1,16 +1,21 @@
+'use strict';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-const users = [];
+const users: any[] = [];
 class User {
     userName: string;
     firstName: string;
     lastName: string;
     birthDay: Date;
-    constructor (userName: string, firstName: string, lastName: string, birthDay: Date){
+    give: any;
+    receive: any;
+    constructor (userName?: string, firstName?: string, lastName?: string, birthDay?: Date, give?: any, receive?: any){
         this.userName = userName
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDay = birthDay;
+        this.give = give;
+        this.receive = receive;
     }
 }
 
@@ -35,15 +40,22 @@ function Welcome( ) {
 function Register () {
     function click(e: { preventDefault: () => void; }) {
         e.preventDefault()
-        const form = document.querySelector( '.form--register' )
-        const formFields = form.querySelectorAll('input')
+        let form = document.querySelector( '.form--register' )
+        let formFields = form.querySelectorAll('input')
+        let formData: any[] = []
         formFields.forEach((item) => {
             if( item.value != null ) {
-                console.log( item.value )
+                // console.log( item.value )
+                formData.push( item.value );
+                console.log( formData );
             }
-
+            return formData;
         })
-        // console.log( document.querySelector( '.form--register' ) )
+        let newUser = new User(...formData);
+        users.push(newUser);
+        console.log(users);
+        // form.reset();
+        // console.log( ...formData );
     }
     return (
         <div>
@@ -58,7 +70,7 @@ function Register () {
                 <label htmlFor="give" className="form__label form__label--register form__label--checkbox">Give D!</label>
                 <input type="checkbox" className="form__input form__input--register form__input--checkbox" id="give"/>
                 <label htmlFor="receive" className="form__label form__label--register form__label--checkbox">Receive D!</label>
-                <input type="checkbox" className="form__input form__input--register form__input--checkbox" name="" id="receive"/>
+                <input type="checkbox" className="form__input form__input--register form__input--checkbox" id="receive"/>
 
             </div>
             <button onClick={click}> Submit! </button>
