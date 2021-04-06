@@ -9,7 +9,7 @@ class User {
     birthDay: Date;
     give: any;
     receive: any;
-    constructor (userName?: string, firstName?: string, lastName?: string, birthDay?: Date, give?: any, receive?: any){
+    constructor (userName?: string, firstName?: string, lastName?: string, birthDay?: Date, give?: boolean, receive?: boolean){
         this.userName = userName
         this.firstName = firstName;
         this.lastName = lastName;
@@ -42,12 +42,28 @@ function Register () {
         e.preventDefault()
         let form = document.querySelector( '.form--register' )
         let formFields = form.querySelectorAll('input')
-        let formData: any[] = []
+        let formData: any[] = [];
         formFields.forEach((item) => {
-            if( item.value != null ) {
-                // console.log( item.value )
-                formData.push( item.value );
-                console.log( formData );
+            let itemValue: any;
+            if( item.value != undefined ) {
+                if ( item.type != 'checkbox' && item.value != '' ) {
+                    itemValue = item.value;
+                    formData.push( itemValue );
+                } else if ( item.type == 'checkbox' ) {
+                    if( item.checked == true ) {
+                        itemValue = true;
+                        formData.push( itemValue );
+                    } else {
+                        itemValue = false;
+                        formData.push(itemValue);
+                    }
+                } else {
+                    itemValue = '';
+                    formData.push( itemValue );
+                }
+            } else {
+                itemValue = '';
+                formData.push( itemValue )
             }
             return formData;
         })
