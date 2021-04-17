@@ -7,7 +7,7 @@ import * as ReactDOM from 'react-dom';
 //components!
 import Welcome from "./components/welcome";
 import Register from "./components/Register";
-
+import Users from "./components/Users"
 
 
 
@@ -15,6 +15,7 @@ function App() {
     return (
         <div>
             <Welcome />
+            <Users />
             <Register />
         </div>
     )

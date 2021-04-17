@@ -1,6 +1,6 @@
 import React from 'react';
 import User from '../functions/functions';
-const users = [];
+import {users} from "../variables/globals";
 function Register () {
     function click(e: { preventDefault: () => void; }) {
         e.preventDefault()
