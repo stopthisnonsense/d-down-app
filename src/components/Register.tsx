@@ -1,14 +1,14 @@
 import React from 'react';
 import User from '../functions/functions';
-const users: any[] = [];
+const users = [];
 function Register () {
     function click(e: { preventDefault: () => void; }) {
         e.preventDefault()
         const form = document.querySelector( '.form--register' )
         const formFields = form.querySelectorAll('input')
-        const formData: any[] = [];
+        const formData = [];
         formFields.forEach((item) => {
-            let itemValue: any;
+            let itemValue;
             if( item.value != undefined && itemValue != '' ) {
                 if ( item.type != 'checkbox' && item.value != '' ) {
                     itemValue = item.value;
